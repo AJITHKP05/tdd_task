@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
                 },
                 child: Text("Calculate"),
               ),
-              Obx(() => Text("String count :${controller.sum.value}")),
+              Obx(() => Text("Sum: ${controller.sum.value}")),
             ],
           ),
         ),
