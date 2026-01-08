@@ -2,12 +2,23 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  RxInt count = 0.obs;
+  RxInt sum = 0.obs;
   TextEditingController textController = TextEditingController();
 
   void countString() {
-    textController.text.isEmpty
-        ? count.value = 0
-        : count.value = textController.text.length;
+    if (textController.text.isNotEmpty) {
+      sum.value = 0;
+      int tempSum = 0;
+      List<String> subValues = textController.text.split(",");
+      for (final value in subValues) {
+        final number = int.tryParse(value.trim());
+        if (number != null) {
+          tempSum += number;
+        }
+      }
+      sum.value = tempSum;
+    } else {
+      sum.value = 0;
+    }
   }
 }
